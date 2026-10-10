@@ -4,10 +4,12 @@ Config = {
 	Debug = false,						-- Enables logging and on screen display of what your character is wearing.
 	GUI = {
 		Position = {x = 0.65, y = 0.5},	-- 0.5 is the middle!
-		AllowInCars = false,			-- Allow the GUI in cars?
-		AllowWhenRagdolled = false,			-- Allow the GUI when ragdolled?
+		AllowInCars = true,			-- Allow the GUI in cars?
+		AllowWhenRagdolled = true,			-- Allow the GUI when ragdolled?
 		Enabled = true, 				-- You can turn the gui off here, the base commands will still work.
-		Key = GetKey("Y"), 				-- Change the GUI key here.
+		UseKeyMapping = true,			-- true = registered keybind (zero idle cost, players can rebind it in GTA settings). false = old polling using Key below.
+		KeyName = "Y",					-- Default key when UseKeyMapping is on.
+		Key = GetKey("Y"), 				-- Only used when UseKeyMapping = false.
 		Sound = true,					-- You can disable sound in the GUI here.
 		TextColor = {255,255,255},
 		TextOutline = true,
@@ -179,7 +181,7 @@ Config.ExtraCommands = {
 		Rotate = true
 	},
 	["clothingexit"] = {
-		Func = function() MenuOpened = false end,
+		Func = function() SetMenu(false) end,
 		Sprite = "exit",
 		Desc = "",
 		Name = Lang("Exit"),
